@@ -1,9 +1,10 @@
 import Vue from 'vue'
+import app from './components/app.vue'
 import store from './store'
-import counter from './counter.vue'
+import './base.css'
 
 new Vue({
   el: '#app',
-  render: h => h(counter),
-  store  // 配置store ---> 所有的组件对象都多了一个属性$store
+  render: h => h(app),
+  store
 })
