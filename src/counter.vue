@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapActions, mapState} from 'vuex'
   export default {
 
     mounted () {
@@ -19,7 +19,7 @@
     /*
     {
       count () {
-        return this.$store.getters.count
+        return this.$store.state.count
       },
       evenOrOdd () {
         return this.$store.getters.evenOrOdd
@@ -27,10 +27,26 @@
     }
      */
     //computed: mapGetters(['count', 'evenOrOdd']),
-    computed: mapGetters({
-      count: 'count',
-      evenOrOdd2: 'evenOrOdd'
-    }),
+    /*
+    ...的功能:
+    打包(数组)
+      function fn(...args) {}
+      fn(1, 2, 3)
+    拆包(数组)
+      arr1 = [1,3]
+      arr2 = [4, ...arr1]
+      ms = {
+        a: 1,
+        b: 2
+      }
+      <Xxx {...ms}>
+    */
+    computed: {
+      ...mapState(['count']),  // 使用...进行拆包(对象)
+      ...mapGetters({
+        evenOrOdd2: 'evenOrOdd'
+      })
+    },
     /*
     {
       increment () {

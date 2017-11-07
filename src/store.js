@@ -38,9 +38,9 @@ const actions = {
   }
 }
 const getters = {
-  count (state) {
+  /*count (state) {
     return state.count
-  },
+  },*/
   evenOrOdd (state) {
     return state.count%2===1 ? '奇数' : '偶数'
   }
