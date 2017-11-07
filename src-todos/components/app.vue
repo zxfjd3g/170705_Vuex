@@ -1,29 +1,29 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <todo-header></todo-header>
-      <todo-main></todo-main>
-      <todo-footer></todo-footer>
+      <todo-header/>
+      <todo-main/>
+      <todo-footer/>
     </div>
   </div>
 </template>
 
 <script>
-  import todoHeader from './todoHeader.vue'
-  import todoMain from './todoMain.vue'
-  import todoFooter from './todoFooter.vue'
-  import storageUtil from '../util/storageUtil'
+  import header from './header.vue'
+  import main from './main.vue'
+  import footer from './footer.vue'
 
   export default {
-    created () {
-      // 模拟异步读取数据
-      this.$store.dispatch('readTodo')
+
+    mounted () {
+      //读取localStorage存储的todos
+      this.$store.dispatch('readTodos')
     },
 
     components: {
-      todoHeader,
-      todoMain,
-      todoFooter
+      'todo-header': header,
+      'todo-main': main,
+      'todo-footer': footer
     }
   }
 </script>
@@ -33,7 +33,6 @@
     width: 600px;
     margin: 0 auto;
   }
-
   .todo-container .todo-wrap {
     padding: 10px;
     border: 1px solid #ddd;

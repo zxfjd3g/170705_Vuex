@@ -1,19 +1,9 @@
 export default {
-  todos (state) {
-    return state.todos
-  },
-
-  totalSize (state) {
-    return state.todos.length
-  },
-
   completeSize (state) {
-    return state.todos.reduce((preTotal, todo) => {
-      return preTotal + (todo.complete ? 1 : 0)
-    }, 0)
+    return state.todos.filter(todo=>todo.complete).length
   },
 
   isAllComplete (state, getters) {
-    return  getters.totalSize===getters.completeSize && getters.totalSize>0
+    return state.todos.length>0 && state.todos.length===getters.completeSize
   }
 }

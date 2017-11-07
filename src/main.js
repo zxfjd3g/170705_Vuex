@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import app from './components/app.vue'
 import store from './store'
-import './base.css'
+import app from './components/app.vue'
+import {currency} from './currency'
+
+Vue.filter('currency', currency)
 
 new Vue({
   el: '#app',
-  render: h => h(app),
-  store
+  store,
+  render: h => h(app)
 })
